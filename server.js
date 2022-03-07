@@ -3,7 +3,9 @@ const app = express();
 const mysql = require('mysql');
 const _ = require('lodash');
 const bodyParser = require('body-parser')
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -79,9 +81,9 @@ app.get('/api/getallmovie', (req, res) => {
         (err, data, fil) => {
             if(data && data[0]) {
 
-                for (let i = 0; i < data.length; i++) {
-                    delete data[i].id                    
-                }
+                // for (let i = 0; i < data.length; i++) {
+                //     delete data[i].id                    
+                // }
 
                 return res.status(200).json({
                     RespCode: 200,
